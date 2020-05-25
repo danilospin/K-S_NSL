@@ -152,6 +152,7 @@ Label Root
 				Var: _inn
 				Var: _p1
 				Var: _qc1
+				Param: _Test
 
 			}
 
@@ -208,7 +209,6 @@ Label Root
 			Var: exit1
 			Var: imi
 			Var: inn
-			Param: L1rdSub
 
 		}
 
@@ -667,7 +667,6 @@ Var: entry1exit 0 n + n n
 Var: exit1 0 s + n n
 Var: imi 0 s + n n
 Var: inn 0 s + n n
-Param: L1rdSub 0 n + n n	0
 
 Object: Firm1 C	1
 Param: _ID1 0 n + n n	0
@@ -705,6 +704,7 @@ Var: _imi 0 n + n n
 Var: _inn 0 n + n n
 Var: _p1 0 n + n n
 Var: _qc1 1 n + n n	0
+Param: _Test 0 s + n n	0
 
 Object: Cli C	1
 Param: _IDc 0 n + n n	0
@@ -1994,12 +1994,6 @@ _INIT_
 
 END_DESCRIPTION
 
-Parameter_L1rdSub
-(no description available)
-_INIT_
-
-END_DESCRIPTION
-
 Object_Firm1
 Capital-good firm object
 
@@ -2220,6 +2214,12 @@ Credit class of firm in capital-good sector
 (1,2,3,4)
 _INIT_
 All 20 instances equal to 0.
+END_DESCRIPTION
+
+Parameter__Test
+(no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Object_Cli

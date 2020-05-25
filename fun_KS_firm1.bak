@@ -266,8 +266,7 @@ if ( v[1] > 0 )
 	v[0] = v[2] * v[1];
 else											// no sales
 	// keep current expenditure or a share of available cash
-	v[0] = CURRENT;
-	}
+	v[0] = CURRENT;}
 RESULT( v[0] )
 
 

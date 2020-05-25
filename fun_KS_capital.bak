@@ -39,6 +39,7 @@ else
 RESULT( v[2] + ( v[3] - v[2] ) * v[6] )
 
 
+
 EQUATION( "MC1" )
 /*
 Market conditions index for entry in capital-good sector
