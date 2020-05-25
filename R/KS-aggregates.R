@@ -10,9 +10,11 @@
 #
 #******************************************************************
 
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 folder   <- "data"                    # data files folder
-baseName <- "Sim"                     # data files base name (same as .lsd file)
-nExp <- 2                             # number of experiments
+baseName <- "Sim2_Teste_NRL"                     # data files base name (same as .lsd file)
+nExp <- 1                             # number of experiments
 iniDrop <- 0                          # initial time steps to drop from analysis (0=none)
 nKeep <- -1                           # number of time steps to keep (-1=all)
 
