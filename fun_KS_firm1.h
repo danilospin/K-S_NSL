@@ -46,7 +46,7 @@ else
 	v[2] = v[3] = 0;							// innovation failure
 
 // imitation process (success probability)
-v[4] = 1 - exp( - VS( PARENT, "zeta2" ) * ( 1 - xi ) * L1rdN ); 
+v[4] = 1 - exp( - VS( PARENT, "zeta2" ) * ( 1 - xi ) * L1rdN * (1+VS( PARENT, "L1rdSub"))); 
 
 if ( bernoulli( v[4] ) )						// imitation succeeded?
 {

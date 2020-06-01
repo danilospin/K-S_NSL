@@ -667,7 +667,7 @@ Var: entry1exit 0 n + n n
 Var: exit1 0 s + n n
 Var: imi 0 s + n n
 Var: inn 0 s + n n
-Param: L1rdSub 0 n + n n	0.02
+Param: L1rdSub 0 n + n n	0
 
 Object: Firm1 C	1
 Param: _ID1 0 n + n n	0

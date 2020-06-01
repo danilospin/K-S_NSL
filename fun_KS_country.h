@@ -76,6 +76,7 @@ v[2] = VS( LABSUPL0, "Ls" ) - VS( LABSUPL0, "L" );// unemployed workers
 
 v[0] = 0;										// wages accumulator
 
+
 if ( i == 0 )									// work-or-die + min
 	// minimum income
 	v[0] += v[2] * VS( LABSUPL0, "w0min" );	
@@ -156,7 +157,14 @@ v[2] = VLS( FINSECL0, "rRes", 1 ) * VLS( FINSECL0, "Depo", 1 );
 // force debt update, as it may have been already updated in 'C'
 RECALC( "Deb" );					
 
-RESULT( V( "G" ) + v[1] + v[2] + VLS( FINSECL0, "Gbail", 1 ) - VL( "Tax", 1 ) )
+//Debt Experiment 1
+double L1rdN = VS( CAPSECL0, "L1rd")* VS( LABSUPL0, "Ls0" ) / VLS( LABSUPL0, "Ls", 1 );
+v[3]=VS( CAPSECL0, "xi" )* L1rdN* VS( CAPSECL0, "L1rdSub" );
+//Debt Experiment 2
+//Debt Experiment 3
+//Debt Experiment 4
+
+RESULT( V( "G" ) + v[1] + v[2] + v[3] + VLS( FINSECL0, "Gbail", 1 ) - VL( "Tax", 1 ) )
 
 
 EQUATION( "GDP" )

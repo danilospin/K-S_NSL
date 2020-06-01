@@ -120,6 +120,7 @@ Label Root
 				Param: _ID1
 				Param: _bank1
 				Param: _pOrd1
+				Param: _public1
 				Param: _t1ent
 				Func: _cred1
 				Var: _Atau
@@ -158,6 +159,7 @@ Label Root
 			Param: F10
 			Param: F1max
 			Param: F1min
+			Param: F1p
 			Param: L1rdMax
 			Param: L1shortMax
 			Param: NW10
@@ -206,6 +208,18 @@ Label Root
 			Var: exit1
 			Var: imi
 			Var: inn
+			Param: xi_ES
+			Param: alpha1_ES
+			Param: beta1_ES
+			Param: x1inf_ES
+			Param: x1sup_ES
+			Param: pubTechDist
+			Param: L1rdSub
+			Param: zeta_ES
+			Var: x1infNRL
+			Var: x1supNRL
+			Var: maxRD
+			Var: RD_ES
 
 		}
 
@@ -368,6 +382,7 @@ Label Root
 			Var: l2avg
 			Var: oldVint
 			Var: p2avg
+			Param: invSub
 
 		}
 
@@ -613,10 +628,11 @@ Var: wU 0 s + n n
 Object: Capital C	1
 Param: Deb10ratio 0 n + n n	1
 Param: F10 0 n + n n	50
-Param: F1max 0 n + n n	50
-Param: F1min 0 n + n n	50
+Param: F1max 0 n + n n	100
+Param: F1min 0 n + n n	1
+Param: F1p 0 n + n n	25
 Param: L1rdMax 0 n + n n	0.2
-Param: L1shortMax 0 n + n n	0.2
+Param: L1shortMax 0 n + n n	1
 Param: NW10 0 n + n n	10000
 Param: PPI0 0 n + n n	0
 Param: Phi3 0 n + n n	0.1
@@ -663,11 +679,24 @@ Var: entry1exit 0 n + n n
 Var: exit1 0 s + n n
 Var: imi 0 s + n n
 Var: inn 0 s + n n
+Param: xi_ES 0 n + n n	0
+Param: alpha1_ES 0 n + n n	0
+Param: beta1_ES 0 n + n n	0
+Param: x1inf_ES 0 n + n n	0
+Param: x1sup_ES 0 n + n n	0
+Param: pubTechDist 0 n + n n	0
+Param: L1rdSub 0 n + n n	0
+Param: zeta_ES 0 n + n n	0
+Var: x1infNRL 1 n + n n	0
+Var: x1supNRL 1 n + n n	0
+Var: maxRD 0 n + n n
+Var: RD_ES 0 n + n n
 
 Object: Firm1 C	1
 Param: _ID1 0 n + n n	0
 Param: _bank1 0 n + n n	0
 Param: _pOrd1 0 n + n n	0
+Param: _public1 0 n + n n	0
 Param: _t1ent 0 n + n n	0
 Func: _cred1 0 n + n n
 Var: _Atau 1 n + n n	1
@@ -710,8 +739,8 @@ Param: _tSel 0 n + n n	0
 Object: Consumption C	1
 Param: Deb20ratio 0 n + n n	1
 Param: F20 0 n + n n	200
-Param: F2max 0 n + n n	200
-Param: F2min 0 n + n n	200
+Param: F2max 0 n + n n	400
+Param: F2min 0 n + n n	1
 Param: K0 0 n + n n	1200
 Param: NW20 0 n + n n	10000
 Param: Phi1 0 n + n n	0.1
@@ -785,6 +814,7 @@ Var: exit2 0 s + n p
 Var: l2avg 1 s + n n	0
 Var: oldVint 1 n + n n	1
 Var: p2avg 0 s + n n
+Param: invSub 0 n + n n	0
 
 Object: Firm2 C	1
 Param: _ID2 0 n + n n	0
@@ -1671,6 +1701,13 @@ _INIT_
 All 1 instances equal to 1.
 END_DESCRIPTION
 
+Parameter_F1p
+Initial number of public firms in capital-good sector
+(>=F1pMin)
+_INIT_
+All 1 instances equal to 25.
+END_DESCRIPTION
+
 Parameter_L1rdMax
 Maximum share of workers in R&D
 (0, 1)
@@ -1682,7 +1719,7 @@ Parameter_L1shortMax
 Maximum labor shortage allowed in capital-good sector
 (0, 1)
 _INIT_
-All 1 instances equal to 0.2.
+All 1 instances equal to 1.
 END_DESCRIPTION
 
 Parameter_NW10
@@ -1981,6 +2018,78 @@ _INIT_
 
 END_DESCRIPTION
 
+Parameter_xi_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_alpha1_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_beta1_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_x1inf_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_x1sup_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_pubTechDist
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_L1rdSub
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_zeta_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Variable_x1infNRL
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Variable_x1supNRL
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Variable_maxRD
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Variable_RD_ES
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
 Object_Firm1
 Capital-good firm object
 
@@ -2006,6 +2115,14 @@ Parameter__pOrd1
 Credit pecking order position in capital-good sector
 _INIT_
 All 20 instances equal to 0.
+END_DESCRIPTION
+
+Parameter__public1
+Type of capital-good firm
+0 = private firm
+1 = public firm
+_INIT_
+All 1 instances equal to 0.
 END_DESCRIPTION
 
 Parameter__t1ent
@@ -2734,6 +2851,12 @@ END_DESCRIPTION
 Variable_p2avg
 Weighted average price charged in consumption-good sector
 Weighted by effective production
+_INIT_
+
+END_DESCRIPTION
+
+Parameter_invSub
+(no description available)
 _INIT_
 
 END_DESCRIPTION
@@ -3542,7 +3665,6 @@ END_DESCRIPTION
 
 DOCUOBSERVE
 Root
-_postChg
 _A2
 _E
 _JO2
