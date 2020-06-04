@@ -32,3 +32,33 @@ LsdExit
 Message:
 invalid command name "LsdExit"
 -----
+
+
+====================> NEW TCL SESSION
+
+(06/02/20 12:36:25)
+Command:
+FATAL ERROR
+Message:
+System Signal received: SIGSEGV (Segmentation violation)
+-----
+
+
+====================> NEW TCL SESSION
+
+(06/03/20 19:40:00)
+Command:
+FATAL ERROR
+Message:
+System Signal received: SIGSEGV (Segmentation violation)
+-----
+
+
+====================> NEW TCL SESSION
+
+(06/04/20 10:26:51)
+Command:
+FATAL ERROR
+Message:
+System Signal received: SIGSEGV (Segmentation violation)
+-----

@@ -384,7 +384,7 @@ EQUATION( "x1infNRL" ) //radical innovation - increase technological opportuniti
 
 v[0] = V("RD_ES"); 
 v[1] = 1 - exp( - V("zeta_ES") * v[0] ); //Zeta_ES is the Zeta for radical innovations. v[1] is the bernoulli parameter
-
+v[3]=0;
 if ( bernoulli( v[1] )==1 )						// radical innovation succeeded?
 {
 	double alpha1_ES = V("alpha1_ES");	// beta distrib. alpha parameter for radical innovations
@@ -393,7 +393,9 @@ if ( bernoulli( v[1] )==1 )						// radical innovation succeeded?
 	double x1sup_ES = V("x1sup_ES");		// upper beta inno. draw support for radical innovations
 	
 	v[2]=beta(alpha1_ES, beta1_ES ); // Parameter of Technological Opportunities
-	v[3]= x1inf_ES + v[2] * ( x1sup_ES - x1inf_ES  ); //New value for Technological Opportunities
+	if( v[2]>0 )
+		{v[3]= x1inf_ES + v[2] * ( x1sup_ES - x1inf_ES  );
+		} //New value for Technological Opportunities
 }
  	
  	 double x1supNRL = V("x1supNRL");

@@ -106,8 +106,18 @@ else
 			}
 		}
 	}
+
 }
 
+//Debt Experiment 1
+double L1rdN = VS( CAPSECL0, "L1rd")* VS( LABSUPL0, "Ls0" ) / VLS( LABSUPL0, "Ls", 1 );
+v[0]+=L1rdN* VS( CAPSECL0, "L1rdSub" )*VS(CAPSECL0, "zeta1")*VS( CAPSECL0, "xi" );
+//Debt Experiment 2
+v[0]+=VS( CONSECL0, "invSub")*VL("Tax",1);
+//Debt Experiment 3
+//v[0]+=
+//Debt Experiment 4
+v[0]+=VS(CAPSECL0, "RD_ES")*VS(CAPSECL0, "zeta_ES")*VS( CAPSECL0, "xi_ES" )/10;
 RESULT( v[0] )
 
 
@@ -157,14 +167,7 @@ v[2] = VLS( FINSECL0, "rRes", 1 ) * VLS( FINSECL0, "Depo", 1 );
 // force debt update, as it may have been already updated in 'C'
 RECALC( "Deb" );					
 
-//Debt Experiment 1
-double L1rdN = VS( CAPSECL0, "L1rd")* VS( LABSUPL0, "Ls0" ) / VLS( LABSUPL0, "Ls", 1 );
-v[3]=VS( CAPSECL0, "xi" )* L1rdN* VS( CAPSECL0, "L1rdSub" );
-//Debt Experiment 2
-//Debt Experiment 3
-//Debt Experiment 4
-
-RESULT( V( "G" ) + v[1] + v[2] + v[3] + VLS( FINSECL0, "Gbail", 1 ) - VL( "Tax", 1 ) )
+RESULT( V( "G" ) + v[1] + v[2] + VLS( FINSECL0, "Gbail", 1 ) - VL( "Tax", 1 ) )
 
 
 EQUATION( "GDP" )
